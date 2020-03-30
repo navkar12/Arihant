@@ -1,0 +1,35 @@
+# jumpsearch algorithm implementation using python
+
+import math
+
+def jumpSearch(arr,n,x):
+  m = math.sqrt(n) # step size calculation m =sqrt(n)
+  prev = 0 
+  #  this loop searches for min index value of block in which x is present
+  # end value of block is in m
+
+  while arr[int(min(m,n)-1)] < x:
+      prev = m
+      m+=math.sqrt(n)
+      if prev >= n:
+        return -1
+
+# this loop does a linear search in block prev < x < m 
+  while arr[int(prev)] <= x:
+     if arr[int(prev)] == x:
+          return int(prev)
+     prev+=1
+      
+   # if no element found   
+  return -1
+           
+        
+
+
+arr = [0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610]
+n=len(arr)
+x=0
+result = jumpSearch(arr,n,x)
+if result == -1:
+    print("element not found")
+else: print("element found at index",result)
