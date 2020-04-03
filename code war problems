@@ -1,0 +1,17 @@
+
+
+
+def duplicate_count(text):
+    count = 0
+    alpha = " "
+    t=text.lower()
+    for s in t:
+      if s == None:
+        return 0
+      if s.isdigit() or s.isalpha():
+        c = t.count(s)
+        if c >= 2:
+          t = t.replace(s,"")
+          count += 1
+
+    return count
